@@ -60,6 +60,19 @@ fun Setting(navHostController: NavHostController) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
+            Text(text = "CashBox :")
+            Text(text = "100Tk")
+        }
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(10.dp)
+        )
+        Row(
+            modifier = Modifier.fillMaxWidth(.9f),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             Text(text = "Bkash :")
             Text(text = "016xxxxXXXX")
         }
