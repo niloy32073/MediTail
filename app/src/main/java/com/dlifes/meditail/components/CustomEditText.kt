@@ -21,9 +21,15 @@ import com.dlifes.meditail.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomEditText(label:String,placeholder:String,inputType:String,modifier: Modifier,onValueChanged: (String) -> Unit) {
-    var visualTransformation:VisualTransformation = VisualTransformation.None
-    var alpha:Float =0f
+fun CustomEditText(
+    label: String,
+    placeholder: String,
+    inputType: String,
+    modifier: Modifier,
+    onValueChanged: (String) -> Unit
+) {
+    var visualTransformation: VisualTransformation = VisualTransformation.None
+    var alpha: Float = 0f
     var value by remember {
         mutableStateOf("")
     }
@@ -32,11 +38,11 @@ fun CustomEditText(label:String,placeholder:String,inputType:String,modifier: Mo
     }
     var iconId = if (passIcon) R.drawable.baseline_key_24 else R.drawable.baseline_key_off_24
 
-    if(inputType=="password" && passIcon){
+    if (inputType == "password" && passIcon) {
         visualTransformation = PasswordVisualTransformation()
         alpha = 1f
     }
-    if(!passIcon){
+    if (!passIcon) {
         alpha = 1f
     }
     OutlinedTextField(value = value, onValueChange = { text ->
@@ -48,10 +54,13 @@ fun CustomEditText(label:String,placeholder:String,inputType:String,modifier: Mo
             text = placeholder
         )
     }, visualTransformation = visualTransformation, trailingIcon = {
-        Image(painter = painterResource(id = iconId),
-            contentDescription = "Icon",
-            modifier = Modifier
-                .clickable { passIcon = !passIcon }
-                .alpha(alpha))
+        if (inputType == "password") {
+            Image(painter = painterResource(id = iconId),
+                contentDescription = "Icon",
+                modifier = Modifier
+                    .clickable { passIcon = !passIcon }
+                    .alpha(alpha))
+        }
+
     }, modifier = modifier)
 }

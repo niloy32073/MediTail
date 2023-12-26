@@ -57,20 +57,46 @@ fun SignUp(navController: NavHostController) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        CustomEditText(label = "Name", placeholder = "Type Your Name", inputType = "name" , modifier = Modifier.fillMaxWidth(.9f), onValueChanged = {value->name=value})
+        CustomEditText(
+            label = "Name",
+            placeholder = "Type Your Name",
+            inputType = "name",
+            modifier = Modifier.fillMaxWidth(.9f),
+            onValueChanged = { value -> name = value })
         Spacer(modifier = Modifier.height(10.dp))
-        CustomEditText(label = "Phone", placeholder = "Type Your Phone", inputType = "phone" , modifier = Modifier.fillMaxWidth(.9f), onValueChanged = {value->phone=value})
+        CustomEditText(
+            label = "Phone",
+            placeholder = "Type Your Phone",
+            inputType = "phone",
+            modifier = Modifier.fillMaxWidth(.9f),
+            onValueChanged = { value -> phone = value })
         Spacer(modifier = Modifier.height(10.dp))
-        CustomEditText(label = "Bkash", placeholder = "Type Your Bkash", inputType = "bkash" , modifier = Modifier.fillMaxWidth(.9f), onValueChanged = {value->bkash=value})
+        CustomEditText(
+            label = "Bkash",
+            placeholder = "Type Your Bkash",
+            inputType = "bkash",
+            modifier = Modifier.fillMaxWidth(.9f),
+            onValueChanged = { value -> bkash = value })
         Spacer(modifier = Modifier.height(10.dp))
-        CustomEditText(label = "Email", placeholder = "Type Your Email", inputType = "email" , modifier = Modifier.fillMaxWidth(.9f), onValueChanged = {value->email=value})
+        CustomEditText(
+            label = "Email",
+            placeholder = "Type Your Email",
+            inputType = "email",
+            modifier = Modifier.fillMaxWidth(.9f),
+            onValueChanged = { value -> email = value })
         Spacer(modifier = Modifier.height(10.dp))
-        CustomEditText(label = "Password", placeholder = "Type Your Password", inputType = "password" , modifier = Modifier.fillMaxWidth(.9f), onValueChanged = {value->password=value})
+        CustomEditText(
+            label = "Password",
+            placeholder = "Type Your Password",
+            inputType = "password",
+            modifier = Modifier.fillMaxWidth(.9f),
+            onValueChanged = { value -> password = value })
         Spacer(modifier = Modifier.height(10.dp))
         Button(
-            onClick = { /*TODO*/ navController.navigate(BottomNavItems.Home.route) }, modifier = Modifier
+            onClick = { /*TODO*/ navController.navigate(BottomNavItems.Home.route) },
+            modifier = Modifier
                 .fillMaxWidth(.9f),
-            shape = RoundedCornerShape(8.dp)
+            shape = RoundedCornerShape(5.dp)
         ) {
             Text(text = "SignUp")
         }
@@ -83,7 +109,7 @@ fun SignUp(navController: NavHostController) {
             Text(text = "Already Have An Account ?")
             Text(
                 text = "LogIn",
-                modifier = Modifier.clickable { /*TODO*/ navController.navigate(BottomNavItems.Login.route)},
+                modifier = Modifier.clickable { /*TODO*/ navController.navigate(BottomNavItems.Login.route) },
                 color = Purple40,
                 fontWeight = FontWeight(800)
             )

@@ -19,6 +19,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.R
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -38,14 +39,31 @@ fun LogIn(navController: NavHostController) {
         mutableStateOf("")
     }
 
-    Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally) {
-        CustomEditText(label = "Email", placeholder = "Type Your Email", inputType = "email", modifier = Modifier.fillMaxWidth(.9f) , onValueChanged ={value->email = value} )
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        CustomEditText(
+            label = "Email",
+            placeholder = "Type Your Email",
+            inputType = "email",
+            modifier = Modifier.fillMaxWidth(.9f),
+            onValueChanged = { value -> email = value })
         Spacer(modifier = Modifier.height(10.dp))
-        CustomEditText(label = "Password", placeholder = "Type Your Password", inputType = "password", modifier = Modifier.fillMaxWidth(.9f) , onValueChanged ={value->password = value} )
+        CustomEditText(
+            label = "Password",
+            placeholder = "Type Your Password",
+            inputType = "password",
+            modifier = Modifier.fillMaxWidth(.9f),
+            onValueChanged = { value -> password = value })
         Spacer(modifier = Modifier.height(10.dp))
-        Button(onClick = { /*TODO*/ navController.navigate(BottomNavItems.Home.route)}, modifier = Modifier
-            .fillMaxWidth(.9f)
-            .clip(RoundedCornerShape(5.dp))) {
+        Button(
+            onClick = { /*TODO*/ navController.navigate(BottomNavItems.Home.route) },
+            modifier = Modifier
+                .fillMaxWidth(.9f),
+            shape = RoundedCornerShape(5.dp)
+        ) {
             Text(text = "LogIn")
         }
         Row(
@@ -57,7 +75,7 @@ fun LogIn(navController: NavHostController) {
             Text(text = "Don't Have An Account ?")
             Text(
                 text = "SignUp",
-                modifier = Modifier.clickable { /*TODO*/ navController.navigate(BottomNavItems.SignUp.route)},
+                modifier = Modifier.clickable { /*TODO*/ navController.navigate(BottomNavItems.SignUp.route) },
                 color = Purple40,
                 fontWeight = FontWeight(800)
             )

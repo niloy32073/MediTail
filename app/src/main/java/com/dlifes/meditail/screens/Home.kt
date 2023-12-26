@@ -21,6 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.dlifes.meditail.components.CustomEditText
@@ -65,11 +66,17 @@ fun Home(navController: NavHostController) {
     var itemList = listOf<String>("i1", "i2", "i3")
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxHeight()
+            .fillMaxWidth()
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(10.dp))
+        Text(
+            text = "Doctor's Info:",
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = TextAlign.Left
+        )
         DropdownMenuWithLabel(
             label = "Speciality",
             itemList = itemList,
@@ -90,6 +97,11 @@ fun Home(navController: NavHostController) {
             itemList = itemList,
             onSelectedValueChange = { value -> speciality = value })
         Spacer(modifier = Modifier.height(10.dp))
+        Text(
+            text = "Patient's Info:",
+            modifier = Modifier.fillMaxWidth(),
+            textAlign = TextAlign.Left
+        )
         CustomEditText(
             label = "Name",
             placeholder = "Type Patient's Name",
@@ -128,10 +140,11 @@ fun Home(navController: NavHostController) {
         Button(
             onClick = { /*TODO*/ navController.navigate(BottomNavItems.Home.route) },
             modifier = Modifier
-                .fillMaxWidth(.9f)
-                .clip(RoundedCornerShape(5.dp))
+                .fillMaxWidth(.9f),
+            shape = RoundedCornerShape(5.dp)
         ) {
             Text(text = "Create Appointment")
         }
+        Spacer(modifier = Modifier.height(10.dp))
     }
 }
