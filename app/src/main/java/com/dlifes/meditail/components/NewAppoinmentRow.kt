@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -37,7 +39,29 @@ fun NewAppoinmentRow() {
             .background(color = Color.Green)
             .padding(10.dp)
     ) {
-        
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(text = "Admin Name")
+            Text(text = "Mobile")
+        }
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(10.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(text = "Bkash no")
+            Text(text = "Paid Amount")
+        }
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(10.dp))
+        Divider(thickness = 1.dp, color = Color.Black)
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
@@ -74,6 +98,9 @@ fun NewAppoinmentRow() {
             Text(text = "Diagnostic")
             Text(text = "Date :")
         }
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
+            .height(10.dp))
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
@@ -92,4 +119,10 @@ fun NewAppoinmentRow() {
             }
         }
     }
+}
+
+@Preview
+@Composable
+fun pp(){
+    NewAppoinmentRow()
 }
