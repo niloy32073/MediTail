@@ -1,6 +1,7 @@
 package com.dlifes.meditail.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -8,7 +9,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
@@ -22,8 +25,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.dlifes.meditail.R
 import com.dlifes.meditail.components.CustomEditText
 import com.dlifes.meditail.navigation.BottomNavItems
@@ -36,8 +41,17 @@ fun Setting(navHostController: NavHostController) {
     var newPassword by remember {
         mutableStateOf("")
     }
+    var diagonostiName by remember {
+        mutableStateOf("")
+    }
+    var diagonostiAddress by remember {
+        mutableStateOf("")
+    }
+    var role = "admin"
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -115,6 +129,80 @@ fun Setting(navHostController: NavHostController) {
             Text(text = "Email :")
             Text(text = "Dummy Email")
         }
+        if(role == "admin"){
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(20.dp)
+            )
+            Divider(thickness = 1.dp, color = Color.Black)
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(20.dp)
+            )
+            Text(
+                text = "Add Diagnostic center :",
+                modifier = Modifier.fillMaxWidth(.9f),
+                textAlign = TextAlign.Left
+            )
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(10.dp)
+            )
+            Row(
+                modifier = Modifier.fillMaxWidth(.9f),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(text = "Name ")
+                CustomEditText(
+                    label = "Name",
+                    placeholder = "Diagnostic Name",
+                    inputType = "name",
+                    modifier = Modifier.fillMaxWidth(.8f),
+                    onValueChanged = { value -> diagonostiName = value }
+                )
+            }
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(10.dp)
+            )
+            Row(
+                modifier = Modifier.fillMaxWidth(.9f),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(text = "Address")
+                CustomEditText(
+                    label = "Address",
+                    placeholder = "Diagnostics's Address",
+                    inputType = "address",
+                    modifier = Modifier.fillMaxWidth(.8f),
+                    onValueChanged = { value -> password = value }
+                )
+            }
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(10.dp)
+            )
+            Button(
+                onClick = { /*TODO*/ }, modifier = Modifier
+                    .fillMaxWidth(.5f),
+                shape = RoundedCornerShape(5.dp)
+            ) {
+                Text(text = "Add Diagnostic")
+            }
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(10.dp)
+            )
+            Divider(thickness = 1.dp, color = Color.Black)
+        }
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
@@ -191,4 +279,11 @@ fun Setting(navHostController: NavHostController) {
             Text(text = "SignOut")
         }
     }
+}
+
+@Composable
+@Preview
+fun pq(){
+    val navHostController = rememberNavController()
+    Setting(navHostController = navHostController )
 }
