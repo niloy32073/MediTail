@@ -112,7 +112,11 @@ fun NewAppoinmentRow() {
                 Text(text = "Cancel Appoinment")
             }
             Spacer(modifier = Modifier.width(10.dp))
-            Button(onClick = { /*TODO*/ },modifier = Modifier
+            Button(onClick = {
+                             if(bill.isNotEmpty()){
+                                 /*TODO*/
+                             }
+                             },modifier = Modifier
                 .fillMaxWidth(),
                 shape = RoundedCornerShape(5.dp)) {
                 Text(text = "Mark As Done")

@@ -249,7 +249,7 @@ fun Setting(navHostController: NavHostController) {
                 placeholder = "New Password",
                 inputType = "password",
                 modifier = Modifier.fillMaxWidth(.8f),
-                onValueChanged = { value -> password = value }
+                onValueChanged = { value -> newPassword = value }
             )
         }
         Spacer(
@@ -258,7 +258,11 @@ fun Setting(navHostController: NavHostController) {
                 .height(10.dp)
         )
         Button(
-            onClick = { /*TODO*/ }, modifier = Modifier
+            onClick = {
+                      if(password.isNotEmpty() && newPassword.isNotEmpty()){
+                          /*ToDo*/
+                      }
+            }, modifier = Modifier
                 .fillMaxWidth(.5f),
             shape = RoundedCornerShape(5.dp)
         ) {
