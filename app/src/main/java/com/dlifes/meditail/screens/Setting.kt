@@ -278,6 +278,8 @@ fun Setting(navHostController: NavHostController) {
         ) {
             Text(text = "SignOut")
         }
+
+        Spacer(modifier = Modifier.height(100.dp).fillMaxWidth())
     }
 }
 

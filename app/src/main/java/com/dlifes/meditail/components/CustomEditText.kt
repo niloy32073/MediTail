@@ -2,6 +2,7 @@ package com.dlifes.meditail.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
@@ -14,6 +15,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import com.dlifes.meditail.R
@@ -30,6 +32,19 @@ fun CustomEditText(
 ) {
     var visualTransformation: VisualTransformation = VisualTransformation.None
     var alpha: Float = 0f
+    var keyboardType=KeyboardType.Text
+    if(inputType == "text"){
+        keyboardType = KeyboardType.Text
+    }
+    else if(inputType == "phone"){
+        keyboardType = KeyboardType.Phone
+    }
+    else if(inputType == "email"){
+        keyboardType = KeyboardType.Email
+    }
+    else if(inputType == "int"){
+        keyboardType = KeyboardType.Decimal
+    }
     var value by remember {
         mutableStateOf("")
     }
@@ -62,5 +77,5 @@ fun CustomEditText(
                     .alpha(alpha))
         }
 
-    }, modifier = modifier)
+    }, modifier = modifier, keyboardOptions = KeyboardOptions(keyboardType = keyboardType))
 }

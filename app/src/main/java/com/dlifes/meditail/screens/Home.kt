@@ -1,5 +1,7 @@
 package com.dlifes.meditail.screens
 
+
+import android.widget.Toast
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -24,9 +26,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import com.dlifes.meditail.MainActivity
 import com.dlifes.meditail.components.CustomEditText
 import com.dlifes.meditail.components.DropdownMenuWithLabel
 import com.dlifes.meditail.components.HistoryRow
@@ -35,6 +39,7 @@ import com.dlifes.meditail.navigation.BottomNavItems
 
 @Composable
 fun Home(navController: NavHostController) {
+
     var speciality by remember {
         mutableStateOf("")
     }
@@ -70,8 +75,8 @@ fun Home(navController: NavHostController) {
 
     var role = "users"
 
-    var itemList = listOf<String>("i1", "i2", "i3","i1", "i2", "i3","i1", "i2", "i3")
-    if(role =="user"){
+    var itemList = listOf<String>("i1", "i2", "i3", "i1", "i2", "i3", "i1", "i2", "i3")
+    if (role == "user") {
         Column(
             modifier = Modifier
                 .fillMaxHeight()
@@ -146,7 +151,13 @@ fun Home(navController: NavHostController) {
                 onValueChanged = { value -> note = value })
             Spacer(modifier = Modifier.height(10.dp))
             Button(
-                onClick = { /*TODO*/ navController.navigate(BottomNavItems.Home.route) },
+                onClick = {
+                    if (speciality.isNotEmpty() && doctor.isNotEmpty() && chamber.isNotEmpty() && diagnostics.isNotEmpty() && name.isNotEmpty() && age.isNotEmpty() && gender.isNotEmpty() && note.isNotEmpty() && phone.isNotEmpty()) {
+                        /*TODO*/
+                        navController.navigate(BottomNavItems.History.route)
+                    }
+
+                },
                 modifier = Modifier
                     .fillMaxWidth(.9f),
                 shape = RoundedCornerShape(5.dp)
@@ -155,30 +166,36 @@ fun Home(navController: NavHostController) {
             }
             Spacer(modifier = Modifier.height(10.dp))
         }
-    }
-    else {
+    } else {
         Column(
             modifier = Modifier
                 .fillMaxHeight()
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally
-        ){
-            Spacer(modifier = Modifier
-                .fillMaxWidth()
-                .height(10.dp))
+        ) {
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(10.dp)
+            )
             Text(text = "Today's Appoinment")
-            Spacer(modifier = Modifier
-                .fillMaxWidth()
-                .height(10.dp))
-            LazyColumn(modifier = Modifier
-                .fillMaxWidth(),
-                contentPadding = PaddingValues(0.dp,16.dp)
-            ){
-                items(itemList){ item ->
+            Spacer(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(10.dp)
+            )
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                contentPadding = PaddingValues(0.dp, 16.dp)
+            ) {
+                items(itemList) { item ->
                     NewAppoinmentRow()
                     Spacer(modifier = Modifier.height(10.dp))
                 }
+
             }
+
         }
     }
 }
